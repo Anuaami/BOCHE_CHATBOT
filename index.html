@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemmanur Credits & Investments Ltd | BOCHE AI Chatbot</title>
+    <meta name="description" content="Official RAG AI Chatbot for Chemmanur Credits and Investments Limited featuring MD Dr. Boby Chemmanur (BOCHE). Get instant answers on Gold Loans, NCD Prospectus, and Interest Rates.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-brand">
+                <img src="boche_md.png" alt="BOCHE MD Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <h1>Chemmanur Credits</h1>
+                    <p>Conquer the World with Love</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#products">Gold Loans</a></li>
+                <li><a href="#products">NCD Prospectus</a></li>
+                <li><a href="#products">Philanthropy</a></li>
+                <li><a href="tel:18004254255" class="btn-helpline">📞 Helpline: 1800-425-4255</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Hero & AI Chatbot Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <span class="hero-tagline">❤️ CONQUER THE WORLD WITH LOVE</span>
+            <h2>Chemmanur Credits AI Customer Assistant</h2>
+            <p class="hero-desc">
+                Welcome to Chemmanur Credits & Investments Limited (RBI Registered NBFC). Ask our MD <strong>Dr. Boby Chemmanur (BOCHE) AI Assistant</strong> any question regarding Gold Loans, NCD Bond Returns, Branch Locations, and Prospectus details.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>160+ Yrs</h3>
+                    <p>Boby Group Legacy</p>
+                </div>
+                <div class="stat-item">
+                    <h3>9.9% p.a.</h3>
+                    <p>Starting Gold Loan Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>13.50%</h3>
+                    <p>Max NCD Yield</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RAG Chatbot UI Container -->
+        <div class="chatbot-wrapper">
+            <div class="chat-header">
+                <div class="avatar-info">
+                    <div class="avatar-frame">
+                        <img src="boche_md.png" alt="Dr. Boby Chemmanur MD Avatar">
+                        <span class="status-badge"></span>
+                    </div>
+                    <div class="md-details">
+                        <h3>Dr. Boby Chemmanur (BOCHE)</h3>
+                        <p>MD & Chairman | AI Assistant</p>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <button class="control-btn" id="btn-tts" title="Toggle Voice Output">
+                        <span id="tts-icon">🔊</span> Voice Speech
+                    </button>
+                    <button class="control-btn" id="btn-citation-toggle" title="View Sources">
+                        📑 Knowledge Sources
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Message History -->
+            <div class="chat-messages" id="chat-messages">
+                <div class="msg bot">
+                    <div class="msg-avatar">
+                        <img src="boche_md.png" alt="BOCHE Avatar">
+                    </div>
+                    <div class="msg-content">
+                        Love you all! ❤️ Welcome to Chemmanur Credits and Investments Limited!
+                        <br><br>
+                        I am your MD AI Assistant powered by RAG retrieval from our official website (<strong>chemmanurcredits.com</strong>) and our NCD Prospectus.
+                        <br><br>
+                        How can I assist you with Gold Loans, required documents, or NCD investments today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Prompt Chips -->
+            <div class="quick-chips">
+                <button class="chip" onclick="sendQuickPrompt('What are the documents needed for gold loan?')">📋 Required Documents</button>
+                <button class="chip" onclick="sendQuickPrompt('What are the Gold Loan interest rates?')">💰 Gold Loan Rates</button>
+                <button class="chip" onclick="sendQuickPrompt('Explain NCD Prospectus interest returns and tenure')">📈 NCD Prospectus</button>
+                <button class="chip" onclick="sendQuickPrompt('Where is the nearest Chemmanur branch and helpline?')">📍 Branch & Helpline</button>
+                <button class="chip" onclick="sendQuickPrompt('Tell me about BOCHE Fans Charitable Trust and free food')">❤️ Charity & Trust</button>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask BOCHE about documents needed for gold loan, interest rates..." autocomplete="off">
+                <button class="btn-send" id="btn-send" title="Send Message">➔</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Business Products -->
+    <section class="products-section" id="products">
+        <div class="section-title">
+            <h2>Our Financial Solutions</h2>
+            <p style="color: var(--text-muted);">Trusted by over 1 Million+ Satisfied Customers Worldwide</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="badge-tag">INSTANT CASH</span>
+                <div class="product-icon">🥇</div>
+                <h3>Gold Loans</h3>
+                <p>Get maximum value for your gold ornaments at lowest interest rates starting from 9.9% p.a. 5-minute approval with minimal documents (Aadhaar & PAN).</p>
+            </div>
+
+            <div class="product-card">
+                <span class="badge-tag">HIGH YIELD</span>
+                <div class="product-icon">📈</div>
+                <h3>Secured NCDs</h3>
+                <p>Public Issue of Non-Convertible Debentures offering up to 13.50% p.a. returns. Flexible monthly payout options and cumulative growth schemes.</p>
+            </div>
+
+            <div class="product-card">
+                <span class="badge-tag">EMPOWERMENT</span>
+                <div class="product-icon">🤝</div>
+                <h3>Microfinance & MSME</h3>
+                <p>Empowering small scale entrepreneurs, retailers, and women self-help groups with easy micro-loans and hassle-free working capital.</p>
+            </div>
+
+            <div class="product-card">
+                <span class="badge-tag">GLOBAL REACH</span>
+                <div class="product-icon">🌐</div>
+                <h3>Forex & Money Transfer</h3>
+                <p>RBI Authorized Forex Dealer Category II. Western Union, MoneyGram, and currency exchange services across our 250+ branch network.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Chemmanur Credits and Investments Limited (CCIL)</strong> — RBI Registered NBFC (No. N-16.00188)</p>
+        <p style="margin-top: 6px; font-size: 0.8rem; color: var(--gold-primary);">Part of Boby Chemmanur International Group | Founder & MD: Dr. Boby Chemmanur (BOCHE)</p>
+        <p style="margin-top: 12px; font-size: 0.75rem;">© 2026 Chemmanur Credits. All Rights Reserved. Tagline: "Conquer the World with Love".</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

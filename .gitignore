@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+scratch/
+*.log
+data/prospectus.pdf
+data/branch_list.xlsx

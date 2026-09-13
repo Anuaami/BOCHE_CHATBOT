@@ -99,22 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         contentDiv.innerHTML = formattedText;
 
-        // Render Knowledge Base Citations if available
-        if (citations && citations.length > 0) {
-            const sourcesDiv = document.createElement('div');
-            sourcesDiv.className = 'msg-sources';
-            sourcesDiv.innerHTML = `<strong>Knowledge Base Sources:</strong><br>`;
-            
-            citations.forEach(c => {
-                const chip = document.createElement('span');
-                chip.className = 'citation-chip';
-                chip.title = c.text.substring(0, 100) + '...';
-                chip.innerHTML = `📄 ${c.title} (${Math.round(c.score * 100)}% match)`;
-                sourcesDiv.appendChild(chip);
-            });
-            contentDiv.appendChild(sourcesDiv);
-        }
-
         msgDiv.appendChild(avatarDiv);
         msgDiv.appendChild(contentDiv);
         chatMessages.appendChild(msgDiv);

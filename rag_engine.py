@@ -89,10 +89,6 @@ class RAGEngine:
                      f"• **Instruments Covered**: Bank Facilities & Secured Non-Convertible Debentures (NCDs)\n" \
                      f"• **Rating Outlook**: **Stable** (Reflects strong capital adequacy, asset security, and reliable debt servicing history)\n\n" \
                      f"Invest with confidence backed by our 160+ year legacy!"
-            if retrieved:
-                answer += "\n\n📌 **Retrieved Reference Details**:\n"
-                for r in retrieved[:2]:
-                    answer += f"• **{r['title']}**: {r['text']}\n"
 
         # Specific match for Annual Reports / Financial Results
         elif any(w in query_lower for w in ["annual report", "financial result", "balance sheet", "audit", "profit", "report"]):
@@ -101,10 +97,6 @@ class RAGEngine:
                      f"• **Where to Download**: Visit our website downloads section at [chemmanurcredits.com/downloads/?ct=Annual%20Reports](https://www.chemmanurcredits.com/downloads/?ct=Annual%20Reports)\n" \
                      f"• **Financial Highlights**: Strong asset growth in Gold Loans and NCD offerings with full regulatory compliance.\n\n" \
                      f"Feel free to ask for specific financial metrics or NCD prospectus figures!"
-            if retrieved:
-                answer += "\n\n📌 **Retrieved Reference Details**:\n"
-                for r in retrieved[:2]:
-                    answer += f"• **{r['title']}**: {r['text']}\n"
 
         # Specific match for Branch / Location search
         elif any(w in query_lower for w in ["branch", "location", "address", "where", "near", "find", "locate", "office"]):
@@ -176,7 +168,7 @@ class RAGEngine:
             answer = f"{boche_greeting}\n\nHere is information regarding: *\"{query}\"*\n\n"
             if retrieved:
                 for r in retrieved:
-                    answer += f"📌 **{r['title']}** ({r['source']}):\n{r['text']}\n\n"
+                    answer += f"📌 **{r['title']}**:\n{r['text']}\n\n"
             else:
                 answer += "Chemmanur Credits & Investments Limited offers Gold Loans (9.9% p.a.), High Yield NCDs (13.5% p.a.), Microfinance, and Forex services.\n\n"
             answer += "Feel free to ask me more details about Gold Loan documents, NCD schemes, Credit Ratings, Annual Reports, or branch locations!"

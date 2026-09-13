@@ -76,8 +76,13 @@ class RAGEngine:
         return results
 
     def generate_response(self, query: str):
-        retrieved = self.retrieve(query, top_k=4)
-        query_lower = query.lower()
+        query_lower = query.lower().strip()
+        
+        # Increase top_k for location/branch searches to capture exact city/district matches
+        is_branch_query = any(w in query_lower for w in ["branch", "location", "address", "where", "near", "find", "locate", "office"])
+        top_k_count = 15 if is_branch_query else 4
+        
+        retrieved = self.retrieve(query, top_k=top_k_count)
         
         boche_greeting = "Love you all! ❤️ Welcome to Chemmanur Credits and Investments Limited."
         
@@ -101,14 +106,31 @@ class RAGEngine:
         # Specific match for Branch / Location search
         elif any(w in query_lower for w in ["branch", "location", "address", "where", "near", "find", "locate", "office"]):
             answer = f"{boche_greeting}\n\nWe operate over **250+ branches** across Kerala, Tamil Nadu, Karnataka, and Maharashtra!\n\n"
-            if retrieved:
-                branch_matches = [r for r in retrieved if "Branch" in r['title'] or "Address" in r['text'] or "Branch Name:" in r['text']]
-                if branch_matches:
-                    answer += "📍 **Matching Branch Locations from Directory**:\n\n"
-                    for b in branch_matches[:3]:
-                        answer += f"🔹 **{b['title']}**\n{b['text']}\n\n"
-                else:
-                    answer += "📌 **Corporate Registered Office**:\nDoor No. D1 to D4, 3rd Floor, Avenue Tower, East Fort, Thrissur, Kerala - 680005\n\n"
+            
+            # Extract specific location search words from user query
+            ignore_words = {"branch", "branches", "location", "locations", "address", "where", "near", "find", "locate", "office", "is", "the", "in", "at", "for", "of", "nearest", "show", "me", "tell", "list", "which"}
+            location_words = [w for w in query_lower.split() if w not in ignore_words and len(w) > 2]
+            
+            matched_branches = []
+            if location_words and self.chunks:
+                for chunk in self.chunks:
+                    text_title = (chunk.get("title", "") + " " + chunk.get("text", "")).lower()
+                    if ("branch" in text_title or "door no" in text_title) and any(w in text_title for w in location_words):
+                        matched_branches.append(chunk)
+            
+            if not matched_branches and retrieved:
+                matched_branches = [
+                    r for r in retrieved 
+                    if "Branch" in r['title'] or "Address" in r['text'] or "Branch Details:" in r['text'] or "Branch Name:" in r['text']
+                ]
+            
+            if matched_branches:
+                answer += "📍 **Matching Branch Locations from Directory**:\n\n"
+                for b in matched_branches[:4]:
+                    answer += f"🔹 **{b['title']}**\n{b['text']}\n\n"
+            else:
+                answer += "📌 **Corporate Registered Office**:\nDoor No. D1 to D4, 3rd Floor, Avenue Tower, East Fort, Thrissur, Kerala - 680005\n\n"
+            
             answer += f"• **Toll-Free Helpline**: **1800-425-4255** | 📞 0487-2424010\n" \
                       f"• **Official Email**: mail@chemmanurcredits.com"
 
